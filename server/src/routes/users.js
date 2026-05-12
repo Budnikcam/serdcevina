@@ -159,14 +159,22 @@ router.post('/like/:userId', auth, async (req, res) => {
 });
 
 // POST /api/users/pass/:userId — пропустить
-router.post('/pass/:userId', auth, async (req, res) => {
+router.post("/pass/:userId", auth, async (req, res) => {
   try {
-    const match = await Match.findOneAndUpdate(
-      { users: { $all: [req.user._id, req.params.userId] } },
-      { status: 'rejected' },
-      { new: true, upsert: true }
-    );
-    res.json({ message: 'Пропущено' });
+    const existing = await Match.findOne({
+      users: { $all: [req.user._id, req.params.userId] }
+    });
+    if (!existing) {
+      await Match.create({
+        users: [req.user._id, req.params.userId],
+        initiator: req.user._id,
+        status: "rejected",
+      });
+    } else {
+      existing.status = "rejected";
+      await existing.save();
+    }
+    res.json({ message: "Пропущено" });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

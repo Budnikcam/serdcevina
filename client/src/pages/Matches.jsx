@@ -30,7 +30,7 @@ export default function Matches() {
     setSelected(match.id);
     setLoadingAI(true);
     try {
-      const result = await aiService.calculateCompatibility(user, match.user);
+      const result = await aiService.calculateCompatibility(user, { ...match.user, looking_for: match.user.looking_for || match.user.lookingFor || "" });
       setAiResult(result);
     } catch {
       toast.error('Ошибка анализа');
