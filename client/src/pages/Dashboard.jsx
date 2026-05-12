@@ -4,6 +4,7 @@ import SwipeCard from '../components/swipe/SwipeCard';
 import BottomNav from '../components/common/BottomNav';
 import { userService } from '../services/api';
 import toast from 'react-hot-toast';
+import DailyBonus from '../components/common/DailyBonus';
 
 export default function Dashboard() {
   const [users, setUsers] = useState([]);
@@ -72,7 +73,9 @@ export default function Dashboard() {
 
   if (!currentUser) {
     return (
+      
       <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4 pb-20">
+        <DailyBonus />
         <div className="text-center">
           <div className="text-8xl mb-6">🎉</div>
           <h1 className="text-3xl font-bold text-gray-800 mb-2">Анкеты закончились!</h1>
@@ -88,6 +91,7 @@ export default function Dashboard() {
 
   return (
     <div className="min-h-screen bg-gray-50 p-4 flex flex-col pb-20">
+      <DailyBonus />
       <div className="max-w-md mx-auto w-full mb-4 flex-shrink-0">
         <div className="flex justify-between items-center">
           <div>
@@ -128,6 +132,7 @@ export default function Dashboard() {
       <div className="max-w-md mx-auto w-full mt-3 text-center flex-shrink-0">
         <p className="text-xs text-gray-400">💡 Свайпайте или используйте кнопки</p>
       </div>
+      
       <BottomNav />
     </div>
   );

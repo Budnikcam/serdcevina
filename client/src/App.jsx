@@ -17,8 +17,8 @@ import Profile from './pages/Profile';
 import Settings from './pages/Settings';
 import Favorites from './pages/Favorites';
 import Notifications from './pages/Notifications';
-import Premium from './pages/Premium';
 import DatingCoach from './pages/DatingCoach';
+import Leaderboard from './pages/Leaderboard';
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -32,7 +32,6 @@ function AnimatedRoutes() {
           <Route path="/register" element={<PageTransition><RegisterForm /></PageTransition>} />
           <Route path="/login" element={<PageTransition><Login /></PageTransition>} />
           
-          {/* Защищённые страницы */}
           <Route path="/dashboard" element={<PageTransition><ProtectedRoute><Dashboard /></ProtectedRoute></PageTransition>} />
           <Route path="/matches" element={<PageTransition><ProtectedRoute><Matches /></ProtectedRoute></PageTransition>} />
           <Route path="/chat/:matchId?" element={<PageTransition><ProtectedRoute><Chat /></ProtectedRoute></PageTransition>} />
@@ -40,13 +39,12 @@ function AnimatedRoutes() {
           <Route path="/profile/:userId" element={<PageTransition><ProtectedRoute><Profile /></ProtectedRoute></PageTransition>} />
           <Route path="/favorites" element={<PageTransition><ProtectedRoute><Favorites /></ProtectedRoute></PageTransition>} />
           <Route path="/notifications" element={<PageTransition><ProtectedRoute><Notifications /></ProtectedRoute></PageTransition>} />
-          <Route path="/premium" element={<PageTransition><ProtectedRoute><Premium /></ProtectedRoute></PageTransition>} />
           <Route path="/settings" element={<PageTransition><ProtectedRoute><Settings /></ProtectedRoute></PageTransition>} />
           <Route path="/coach" element={<PageTransition><ProtectedRoute><DatingCoach /></ProtectedRoute></PageTransition>} />
+          <Route path="/leaderboard" element={<PageTransition><ProtectedRoute><Leaderboard /></ProtectedRoute></PageTransition>} />
         </Routes>
       </AnimatePresence>
       
-      {/* ИИ-ассистент только на защищённых страницах */}
       {!isAuthPage && <AIAssistant />}
     </>
   );
@@ -55,7 +53,6 @@ function AnimatedRoutes() {
 function HomePage() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-600 via-pink-500 to-purple-700 dark:from-gray-900 dark:via-purple-900 dark:to-gray-900 relative overflow-hidden">
-      {/* Анимированный фон */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {[...Array(20)].map((_, i) => (
           <div
@@ -84,7 +81,7 @@ function HomePage() {
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a
             href="/register"
-            className="bg-white text-purple-600 px-10 py-4 rounded-full text-lg font-bold shadow-2xl hover:scale-105 hover:shadow-3xl transition-all duration-300"
+            className="bg-white text-purple-600 px-10 py-4 rounded-full text-lg font-bold shadow-2xl hover:scale-105 transition-all duration-300"
           >
             ✨ Создать анкету
           </a>

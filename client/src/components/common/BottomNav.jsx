@@ -5,7 +5,7 @@ const navItems = [
   { path: '/dashboard', icon: '💕', label: 'Анкеты' },
   { path: '/matches', icon: '💝', label: 'Мэтчи' },
   { path: '/chat', icon: '💬', label: 'Чат' },
-  { path: '/coach', icon: '🤖', label: 'Коуч' },
+  { path: '/leaderboard', icon: '🏆', label: 'Рейтинг' },
   { path: '/profile', icon: '👤', label: 'Профиль' },
 ];
 
@@ -32,9 +32,7 @@ export default function BottomNav() {
               <span className={`text-[10px] font-medium ${isActive ? 'font-bold' : ''}`}>
                 {item.label}
               </span>
-              {isActive && (
-                <span className="w-1 h-1 bg-purple-500 rounded-full" />
-              )}
+              {isActive && <span className="w-1 h-1 bg-purple-500 rounded-full" />}
             </a>
           );
         })}

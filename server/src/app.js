@@ -7,6 +7,7 @@ const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/users');
 const messageRoutes = require('./routes/messages');
 const aiProxy = require('./aiProxy');
+const gameRoutes = require('./routes/game');
 
 const app = express();
 app.use(securityHeaders);
@@ -22,5 +23,6 @@ app.use('/api/auth', authLimiter, authRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/messages', messageRoutes);
 app.use('/ai', aiLimiter, aiProxy);
+app.use('/api/game', gameRoutes);
 app.use((req, res) => res.status(404).json({ error: 'Не найдено' }));
 module.exports = app;
