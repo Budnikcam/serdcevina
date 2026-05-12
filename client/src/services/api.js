@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const API_URL = 'http://localhost:5000/api';
-const AI_URL = 'http://localhost:8000';
+const AI_URL = '/ai';
 
 // Токен из localStorage
 const getToken = () => localStorage.getItem('token');

@@ -5,7 +5,7 @@ const Message = require('../models/Message');
 const axios = require('axios');
 require('dotenv').config();
 
-const AI_URL = 'http://localhost:8000';
+const AI_URL = '/ai';
 
 class BotBrain {
   constructor() {
